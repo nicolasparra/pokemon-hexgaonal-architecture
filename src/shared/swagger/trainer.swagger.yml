@@ -1,0 +1,111 @@
+tags:
+  name: Trainer
+  description: Trainer management
+
+components:
+  schemas:
+    Trainer:
+      type: object
+      properties:
+        name:
+          type: string
+        gender:
+          type: string
+        password:
+          type: string
+        pokemons:
+          type: array
+    TrainerLogin:
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+
+paths:
+  /Trainer:
+    get:
+      tags:
+        - Trainer
+      description: Get All Trainer
+      responses:
+        200:
+          description: List of All Trainer
+    post:
+      tags:
+        - Trainer
+      description: Create Trainer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Trainer"
+      responses:
+        201:
+          description: Create a Trainer
+  /Trainer/test:
+    get:
+      tags:
+        - Trainer
+      description: Test protected path
+      security:
+        - jwt: []
+      responses:
+        200:
+          description: Token Decoded
+  /Trainer/{id}:
+    get:
+      tags:
+        - Trainer
+      description: Get Trainer By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      responses:
+        200:
+          description: List of All Trainer
+    put:
+      tags:
+        - Trainer
+      description: Update Trainer By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Trainer"
+      responses:
+        201:
+          description: Trainer updated
+    delete:
+      tags:
+        - Trainer
+      description: Delete Trainer By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      responses:
+        201:
+          description: List of All Trainer
+  /Trainer/login:
+    post:
+      tags:
+        - Trainer
+      description: Login Trainer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainerLogin"
+      responses:
+        200:
+          description: Token JWT

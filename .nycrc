@@ -1,0 +1,22 @@
+{
+    "include": [
+        "src/pokemon-management/",
+        "src/trainer-management",
+        "src/shared/domain"
+    ],
+    "exclude": [
+        "src/index.ts",
+        "src/pokemon-management/pokemon/infrastructure",
+        "src/pokemon-management/pokemon/application/index.ts",
+        "src/pokemon-management/movement/infrastructure",
+        "src/pokemon-management/movement/application/index.ts",
+        "src/trainer-management/trainer/infrastructure",
+        "src/trainer-management/trainer/application/index.ts"
+    ],
+    "all": true,
+    "reporter": [
+        "lcov",
+        "text"
+    ],
+    "check-coverage": true
+}

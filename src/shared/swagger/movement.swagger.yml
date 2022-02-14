@@ -1,0 +1,81 @@
+tags:
+  name: Movement
+  description: Movement management
+
+components:
+  schemas:
+    Movement:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        power:
+          type: number
+        acuraccy:
+          type: number
+
+paths:
+  /movement:
+    get:
+      tags:
+        - Movement
+      description: Get All Movement
+      responses:
+        200:
+          description: List of All Movement
+    post:
+      tags:
+        - Movement
+      description: Create a Movement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Movement"
+      responses:
+        201:
+          description: Create a Movement
+
+  /movement/{id}:
+    get:
+      tags:
+        - Movement
+      description: Get Movement By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      responses:
+        200:
+          description: List of All Movement
+    put:
+      tags:
+        - Movement
+      description: Update Movement By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Movement"
+      responses:
+        201:
+          description: Movement updated
+    delete:
+      tags:
+        - Movement
+      description: Delete Movement By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      responses:
+        201:
+          description: List of All Movement

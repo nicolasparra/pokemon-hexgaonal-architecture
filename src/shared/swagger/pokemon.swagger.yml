@@ -1,0 +1,85 @@
+tags:
+  name: Pokemon
+  description: Pokemon management
+
+components:
+  schemas:
+    Pokemon:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        attack:
+          type: number
+        defense:
+          type: number
+        health:
+          type: number
+        movements:
+          type: array
+
+paths:
+  /pokemon:
+    get:
+      tags:
+        - Pokemon
+      description: Get All Pokemon
+      responses:
+        200:
+          description: List of All Pokemon
+    post:
+      tags:
+        - Pokemon
+      description: Create Pokemon
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pokemon"
+      responses:
+        201:
+          description: Create a Pokemon
+
+  /pokemon/{id}:
+    get:
+      tags:
+        - Pokemon
+      description: Get Pokemon By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      responses:
+        200:
+          description: List of All Pokemon
+    put:
+      tags:
+        - Pokemon
+      description: Update Pokemon By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pokemon"
+      responses:
+        201:
+          description: Pokemon updated
+    delete:
+      tags:
+        - Pokemon
+      description: Delete Pokemon By Id
+      parameters:
+        - in: path
+          name: id
+          required: true
+      responses:
+        201:
+          description: List of All Pokemon
